@@ -38,12 +38,12 @@ let lastId = 3;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//CHALLENGE 1: GET All posts
+//GET All posts
 app.get("/posts", (req, res) => {
   res.json(posts);
 });
 
-//CHALLENGE 2: GET a specific post by id
+//GET a specific post by id
 app.get("/posts/:id", (req, res) => {
   const id = parseInt(req.params.id);
   const chosenPost = posts.find((post) => (post.id = id));
@@ -54,7 +54,7 @@ app.get("/posts/:id", (req, res) => {
   }
 });
 
-//CHALLENGE 3: POST a new post
+//POST a new post
 app.post("/posts", (req, res) => {
   const now = new Date();
   const formattedNow = now.toISOString();
@@ -71,7 +71,7 @@ app.post("/posts", (req, res) => {
   res.json(newPost);
 });
 
-//CHALLENGE 4: PATCH a post when you just want to update one parameter
+//PATCH a post when you just want to update one parameter
 app.patch("/posts/:id", (req, res) => {
   const id = parseInt(req.params.id);
   const existingPost = posts.find((post) => post.id === id);
@@ -87,7 +87,7 @@ app.patch("/posts/:id", (req, res) => {
   res.json(replacementPost);
 });
 
-//CHALLENGE 5: DELETE a specific post by providing the post id.
+//DELETE a specific post by providing the post id.
 app.delete("/posts/:id", (req, res) => {
   const id = parseInt(req.params.id);
   const searchIndex = posts.findIndex((post) => post.id === id);
